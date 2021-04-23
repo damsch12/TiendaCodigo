@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @question = Question.new
+    @question = user_signed_in? ? Question.new(name: current_user.display_name, email: current_user.email) : Question.new
   end
 
   # GET /products/new
