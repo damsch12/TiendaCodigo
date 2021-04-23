@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        UserMailer.with(question: @question).question_submited_email.deliver_later
         format.html { redirect_to @question, notice: "Your question has been submitted. It will usually take less than 24 hours to answer. Thank you!" }
         format.json { render :show, status: :created, location: @question }
       else

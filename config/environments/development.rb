@@ -40,8 +40,20 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.mailer_sender = 'changethis@example.com'
-  config.action_mailer.delivery_method = :test
+  config.mailer_sender = 'dscheck@codigodelsur.com'
+  # config.action_mailer.delivery_method = :test
+
+  config.action_mailer.delivery_method = :smtp
+  
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    :address              => "smtpout.secureserver.net",
+    :port                 => 587,
+    :user_name            => 'dscheck@codigodelsur.com',
+    :password             => 'Codigodelsur1',
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
