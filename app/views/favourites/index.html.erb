@@ -1,0 +1,11 @@
+<% provide(:title, @title) %>
+<% if @favourites.any? %>
+    <% @favourites.each do |favourite| %>
+        <div class="row">
+            <%= favourite.product.name %> - <%= favourite.product.price %>
+        </div>
+    <% end %>
+    <%= will_paginate @favourites %>
+<% else %>
+    No favourites!
+<% end %>
