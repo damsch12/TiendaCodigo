@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_140301) do
+ActiveRecord::Schema.define(version: 2021_04_30_183545) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string "answer"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "question_id", null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
 
   create_table "favourites", force: :cascade do |t|
     t.integer "product_id"
@@ -52,4 +62,6 @@ ActiveRecord::Schema.define(version: 2021_04_28_140301) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "users"
 end
