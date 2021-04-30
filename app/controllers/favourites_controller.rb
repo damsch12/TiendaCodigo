@@ -2,7 +2,7 @@ class FavouritesController < ApplicationController
   def index
     @title = "Favourites"
     @favourites = current_user.favourites
-    @favourites = @favourites.paginate(page: params[:page]) if @favourites.any?
+    #@favourites = @favourites.paginate(page: params[:page]) if @favourites.any?
   end
 
   def create
