@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :products
       resources :favourites
       resources :questions
+      resources :answers
 
       root to: "products#index"
     end
