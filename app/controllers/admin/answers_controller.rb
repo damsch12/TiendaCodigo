@@ -1,5 +1,13 @@
 module Admin
   class AnswersController < Admin::ApplicationController
+
+    def create
+      question = Question.find(params[:question_id])
+      answer = Answer.new(question_id: params[:question_id], user_id: current_user.id, answer: params[:answer][:answer])
+      question.answers << answer
+      redirect_to admin_question_path(params[:question_id])
+    end
+
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #

@@ -46,6 +46,5 @@ as well as a link to its edit page.
           ><%= render_field attribute, page: page %></dd>
     <% end %>
   </dl>
+  <%= render 'form', answer: @answer, question: page.resource %>
 </section>
-
-<%= render 'form', answer: @answer %>

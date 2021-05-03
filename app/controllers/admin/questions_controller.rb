@@ -3,7 +3,6 @@ module Admin
     
     def show
       @answer = Answer.new
-      @question = Question.find(params[:id])
       super
     end
     
