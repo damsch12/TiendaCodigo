@@ -1,0 +1,11 @@
+<h1> Hi <%= @question.name %> </h1>
+
+<p>Someone answered one of your questions.</p>
+
+<p>
+<b>Question:</b> <%= @question.question %><br/>
+<b>Answer:</b> <%= @answer.answer %><br/>
+<b>By:</b> <%= @user.display_name.empty? ? @user.email : @user.display_name %>
+</p>
+
+Regards!

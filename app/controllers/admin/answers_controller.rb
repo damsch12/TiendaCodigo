@@ -5,6 +5,7 @@ module Admin
       question = Question.find(params[:question_id])
       answer = Answer.new(question_id: params[:question_id], user_id: current_user.id, answer: params[:answer][:answer])
       question.answers << answer
+      AnswerMailer.with(question: question, answer: answer, user: current_user).send_answer.deliver_later
       redirect_to admin_question_path(params[:question_id])
     end
 
