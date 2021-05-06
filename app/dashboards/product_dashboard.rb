@@ -15,6 +15,7 @@ class ProductDashboard < Administrate::BaseDashboard
     image_path: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    favourites: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,6 +27,7 @@ class ProductDashboard < Administrate::BaseDashboard
     name
     description
     price
+    favourites
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
