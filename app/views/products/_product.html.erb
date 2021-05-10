@@ -1,5 +1,9 @@
 <div class="card col-12 col-md-2 mx-1 mb-2 shadow rounded">
-  <%= image_tag product.image_path.empty? ? "https://image.shutterstock.com/image-photo/generic-tin-can-copy-space-600w-137026637.jpg" : product.image_path, alt: product.name, class: 'card-img-top' %>
+  <% if product.image.attached? %>
+    <%= image_tag product.image, alt: product.name, class: 'card-img-top' %>
+  <% else %>
+    <img src="https://image.shutterstock.com/image-photo/generic-tin-can-copy-space-600w-137026637.jpg" class="card-img-top">
+  <% end %>
   <div class="card-body">
     <h5 class="card-title"><%= product.name %></h5>
     <p class="card-text"><%= product.description %></p>

@@ -12,7 +12,11 @@ class ProductDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: Field::String,
     price: Field::Number,
-    image_path: Field::String,
+    image: Field::ActiveStorage.with_options(
+      searchable: false,
+      index_preview_size: [110, 110],
+      show_preview_size: [500, 500]
+    ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     favourites: Field::HasMany,
@@ -36,7 +40,7 @@ class ProductDashboard < Administrate::BaseDashboard
     name
     description
     price
-    image_path
+    image
     created_at
     updated_at
   ].freeze
@@ -48,7 +52,7 @@ class ProductDashboard < Administrate::BaseDashboard
     name
     description
     price
-    image_path
+    image
   ].freeze
 
   # COLLECTION_FILTERS
