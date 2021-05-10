@@ -19,4 +19,9 @@ class User < ApplicationRecord
   def favourite?(product_id)
     favourites.exists?(user_id: self.id, product_id: product_id)
   end
+
+  def admin?
+    return false if self.role.blank?
+    self.role == "Admin"
+  end  
 end

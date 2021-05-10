@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show ]
+  load_and_authorize_resource
 
   # GET /products or /products.json
   def index
