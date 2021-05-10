@@ -23,8 +23,13 @@
               <%= link_to "Home", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Products", products_path, class: "nav-link" %> IN FAV: <%= current_user.favourites.count %>
+              <%= link_to "Products", products_path, class: "nav-link" %>
             </li>
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              IN FAV: <%= current_user.favourites.count %>
+            </li>
+            <% end %>
           </ul>
           <form class="d-flex">
             <% if user_signed_in? %>

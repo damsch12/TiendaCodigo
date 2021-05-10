@@ -1,4 +1,5 @@
 <%= form_with(model: question) do |form| %>
+  <%= hidden_field_tag :product_id, product_id %>
   <% if question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>

@@ -1,4 +1,50 @@
-yay!!!
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Registered users</th>
+      <th scope="col">Unanswered questions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @number_of_users %></td>
+      <td><%= @unanswered_questions %></td>
+    </tr>
+  </tbody>
+</table>
 
-num users: <%= @number_of_users %>
-unanswered questions: <%= @unanswered_questions %>
+<h1 class="main-content__page-title">Top ten favourites</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Favourites</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @top_ten_fav.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.favourite_counter %></td>
+      </tr>
+    <%end %>
+  </tbody>
+</table>
+
+<h1 class="main-content__page-title">Top ten asked questions</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Questions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @top_ten_questions.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.questions_counter %></td>
+      </tr>
+    <%end %>
+  </tbody>
+</table>

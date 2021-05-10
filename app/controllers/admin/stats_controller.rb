@@ -1,13 +1,10 @@
 module Admin
   class StatsController < Admin::ApplicationController
     def index
-      @stats = {
-      }
-
-      @number_of_users = User.count
+      @number_of_users = User.all.count
       @unanswered_questions = Question.where(:answers.empty?).count
-      #@top_products_with_questions = (Product.order('COUNT(questions.id) DESC')).take(10)
-      byebug
+      @top_ten_fav = Product.order(favourite_counter: :desc).first(10)
+      @top_ten_questions = Product.order(questions_counter: :desc).first(10)
     end
   end
 end

@@ -22,7 +22,8 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
-
+    product = Product.find(product_params[:product_id])
+    product.add_question_counter
     respond_to do |format|
       if @question.save
         UserMailer.with(question: @question).question_submited_email.deliver_later
@@ -65,6 +66,10 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:question, :name, :email)
+      params.require(:question).permit(:question, :name, :email, :product_id)
+    end
+    
+    def product_params
+      params.permit(:product_id)
     end
 end

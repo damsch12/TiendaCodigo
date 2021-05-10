@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<%= render 'questions/form', question: @question %>
+<%= render 'questions/form', question: @question, product_id: @product.id %>
 
 <% if user_signed_in? %>
   <% if current_user.favourite?(@product.id)%>
