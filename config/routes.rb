@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   namespace :admin do
-      resources :users
-      resources :products
-      resources :favourites
-      resources :questions
-      resources :answers
+    resources :stats, only: [:index]
+    resources :users
+    resources :products
+    resources :favourites
+    resources :questions
+    resources :answers
 
-      root to: "products#index"
-    end
+    root to: "stats#index"
+  end
   resources :questions
   devise_for :users
   resources :products, only: [:index, :show]

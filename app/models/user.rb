@@ -5,10 +5,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   def add_favourite(product_id)
+    prod = Product.find(product_id)
+    prod.add_favourite_counter
     favourites << Favourite.new(user_id: self.id, product_id: product_id)
   end
   
   def remove_favourite(favourite)
+    favourite.product.substract_favourite_counter
+    favourite.product.save
     favourites.delete(favourite)
   end
   
