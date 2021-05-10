@@ -1,7 +1,11 @@
 <div class="card col mx-1 mb-2 mt-5 shadow rounded">
   <div class="row">
-    <%= image_tag @product.image_path.empty? ? "https://image.shutterstock.com/image-photo/generic-tin-can-copy-space-600w-137026637.jpg" : @product.image_path, alt: @product.name, class: 'card-img-topic col-3' %>
-  
+    <% if @product.image.attached? %>
+      <%= image_tag @product.image, alt: @product.name, class: 'card-img-topic col-3' %>
+    <% else %>
+      <img src="https://image.shutterstock.com/image-photo/generic-tin-can-copy-space-600w-137026637.jpg" class="card-img-topic col-3">
+    <% end %>
+
     <div class="card-body col-9">
       <div class="row pe-3">
         <h1 class="card-title col"><%= @product.name %></h1> 
