@@ -1,4 +1,6 @@
 class FavouritesController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @title = "Favourites"
     @favourites = current_user.favourites
