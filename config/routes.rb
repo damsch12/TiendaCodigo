@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     resources :stats, only: [:index]
     resources :users
     resources :products
-    resources :favourites
+    resources :favourites, except: :index
     resources :questions
-    resources :answers
+    resources :answers, except: :index
 
     root to: "stats#index"
   end
