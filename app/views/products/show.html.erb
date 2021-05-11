@@ -9,8 +9,9 @@
     <div class="card-body col-9">
       <div class="row pe-3">
         <h1 class="card-title col"><%= @product.name %></h1> 
-        <div class="col-2 text-end">
-          <h2>$ <%= @product.price %></h2>
+        <div class="col-4 text-end">
+          <h2 style="display: inline;" class="pt-2">$ <%= @product.price %></h2>
+          <%= render 'favourite' %>
         </div>
       </div>
       <p class="card-text" style="min-height: 250px">
@@ -23,16 +24,4 @@
 
 <%= render 'questions/form', question: @question, product_id: @product.id %>
 
-<% if user_signed_in? %>
-  <% if current_user.favourite?(@product.id)%>
-    <%= form_with(model: current_user.favourites.find_by(product_id: @product.id), html: { method: :delete }, local: true) do |f| %>
-      <%= f.submit "Remove Fav", class: "btn" %>
-    <% end %>
-  <% else %>
-    <%= form_with(model: current_user.favourites.build, local: true) do |f| %>
-      <%= hidden_field_tag :product_id, @product.id %>
-      <%= f.submit "Add to Fav", class: "btn btn-primary" %>
-    <% end %>
-  <% end %>
-<% end %>
-<%= link_to 'Back', products_path, class: 'btn btn-primary' %>
+<%= link_to 'Back', products_path, class: 'btn btn-primary mt-4' %>
