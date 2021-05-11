@@ -22,11 +22,6 @@
             <li class="nav-item">
               <%= link_to "Catalog", root_path, class: "nav-link" %>
             </li>
-            <% if user_signed_in? %>
-            <li class="nav-item">
-              IN FAV: <%= current_user.favourites.count %>
-            </li>
-            <% end %>
           </ul>
           <form class="d-flex">
             <% if user_signed_in? %>
@@ -36,7 +31,7 @@
                     <%= current_user.display_name.nil? ? current_user.email : current_user.display_name %>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <%= link_to "Favourites", favourites_path, class: "dropdown-item" %>
+                    <%= link_to "My Favourites", favourites_path, class: "dropdown-item" %>
                     <li><hr class="dropdown-divider"></li>
                     <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
                   </ul>
