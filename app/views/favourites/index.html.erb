@@ -1,10 +1,25 @@
 <% provide(:title, @title) %>
-<% if @favourites.any? %>
-    <% @favourites.each do |favourite| %>
-        <div class="row">
-            <%= favourite.product.name %> - <%= favourite.product.price %>
-        </div>
-    <% end %>
-<% else %>
-    No favourites!
-<% end %>
+<div class="pt-4">
+  <% if @favourites.any? %>
+    <table class="table align-middle">
+      <tbody>
+        <% @favourites.each do |favourite| %>
+          <tr>
+            <td>
+              <% if favourite.product.image.attached? %>
+                <%= image_tag favourite.product.image, alt: favourite.product.name, style: 'max-width: 100px; height: auto;' %>
+              <% else %>
+                <img src="https://image.shutterstock.com/image-photo/generic-tin-can-copy-space-600w-137026637.jpg" style="max-width: 100px; height: auto;">
+              <% end %>
+            </td>
+            <td class="text-start"><%= link_to favourite.product.name, favourite.product %></td>
+            <td>$ <%= favourite.product.price %></td>
+            <td>remove</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <%= render 'shared/alert'%>
+  <% end %>
+</div>
