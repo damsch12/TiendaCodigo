@@ -19,6 +19,8 @@
   </div>
 </div>
 
+<%= render 'shared/alert' %>
+
 <%= render 'questions/form', question: @question, product_id: @product.id %>
 
 <% if user_signed_in? %>

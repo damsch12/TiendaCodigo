@@ -23,18 +23,22 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
+    if(@question.email.blank? and user_signed_in?)
+      @question.email = current_user.email
+      @question.name = current_user.display_name.nil? ? current_user.email : current_user.display_name
+    end
+
     product = Product.find(product_params[:product_id])
     product.add_question_counter
-    respond_to do |format|
-      if @question.save
-        UserMailer.with(question: @question).question_submited_email.deliver_later
-        format.html { redirect_to @question, notice: "Your question has been submitted. It will usually take less than 24 hours to answer. Thank you!" }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
+
+    if @question.save
+      flash[:success] = 'Your question has been sucessfully submitted.'
+      UserMailer.with(question: @question).question_submited_email.deliver_later
+    else
+      flash[:errors] = @question.errors.full_messages
     end
+
+    redirect_to product
   end
 
   # PATCH/PUT /questions/1 or /questions/1.json
@@ -67,7 +71,7 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:question, :name, :email, :product_id)
+      params.require(:question).permit(:question, :name, :email)
     end
     
     def product_params
