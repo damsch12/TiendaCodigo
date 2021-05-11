@@ -12,24 +12,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :question %>
-    <%= form.text_area :question %>
+  <div class="mb-3">
+    <%= form.text_area :question, class: 'form-control' %>
+    <div class="form-text">If you have any questions, please do not hesitate to contact us.</div>
   </div>
 
   <% if !user_signed_in? %>
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label'%>
+      <%= form.text_field :name, class: 'form-control'%>
     </div>
 
-    <div class="field">
+    <div class="mb-3">
       <%= form.label :email %>
       <%= form.text_field :email %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Send Question', class: 'btn btn-primary' %>
   </div>
 <% end %>
