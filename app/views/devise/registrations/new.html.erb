@@ -1,0 +1,38 @@
+<div class="text-center">
+  <main class="form-signin">
+    <h2 class="h3 mb-3 fw-normal">Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-floating">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        <%= f.label :email %>
+      </div>
+
+      <div class="form-floating">
+        <%
+=begin%>
+ <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br /> 
+<%
+=end%>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        <%= f.label :password %>
+      </div>
+
+      <div class="form-floating">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        <%= f.label :password_confirmation %>
+      </div>
+
+      <div class="actions mt-4">
+        <%= f.submit "Sign up", class: "w-100 btn btn-lg btn-primary" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+    <p class="mt-5 mb-3 text-muted">© 2021</p>
+  </main>
+</div>
