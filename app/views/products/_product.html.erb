@@ -2,11 +2,11 @@
   <% if product.image.attached? %>
     <%= image_tag product.image, alt: product.name, class: 'card-img-top' %>
   <% else %>
-    <img src="https://image.shutterstock.com/image-photo/generic-tin-can-copy-space-600w-137026637.jpg" class="card-img-top">
+    <img src="https://image.shutterstock.com/image-photo/generic-tin-can-copy-space-600w-137026637.jpg" class="card-img-top"/>
   <% end %>
   <div class="card-body">
     <h5 class="card-title"><%= product.name %></h5>
     <p class="card-text"><%= product.description %></p>
-    <%= link_to 'See more', product, class: 'btn btn-primary' %>
+    <%= link_to 'See more', product, class: 'btn btn-primary', id: 'see_more_' + product.id.to_s %>
   </div>
 </div>
