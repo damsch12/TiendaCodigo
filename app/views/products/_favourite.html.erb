@@ -1,14 +1,14 @@
 <% if user_signed_in? %>
   <% if current_user.favourite?(@product.id)%>
     <%= form_with(model: current_user.favourites.find_by(product_id: @product.id), html: { method: :delete, style: 'display: inline;' }, local: true) do |f| %>
-      <%= button_tag( :class => "btn btn-link") do %>
+      <%= button_tag( :class => "btn btn-link", :id => "favorite_remove") do %>
         <%= image_tag '/assets/heart.svg', alt: 'Favourite'%>
       <% end %>
     <% end %>
   <% else %>
     <%= form_with(model: current_user.favourites.build, html: { style: 'display: inline;' }, local: true) do |f| %>
       <%= hidden_field_tag :product_id, @product.id %>
-      <%= button_tag( :class => "btn btn-link") do %>
+      <%= button_tag( :type => 'submit', :class => "btn btn-link", :id => "favorite_add") do %>
         <%= image_tag '/assets/heart_empty.svg', alt: 'Favourite'%>
       <% end %>
     <% end %>

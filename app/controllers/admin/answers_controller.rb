@@ -1,6 +1,5 @@
 module Admin
   class AnswersController < Admin::ApplicationController
-
     def create
       question = Question.find(params[:question_id])
       answer = Answer.new(question_id: params[:question_id], user_id: current_user.id, answer: params[:answer][:answer])

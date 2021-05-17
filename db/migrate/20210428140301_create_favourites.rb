@@ -9,6 +9,6 @@ class CreateFavourites < ActiveRecord::Migration[6.1]
 
     add_index :favourites, :product_id
     add_index :favourites, :user_id
-    add_index :favourites, [:product_id, :user_id], unique: true
+    add_index :favourites, %i[product_id user_id], unique: true
   end
 end

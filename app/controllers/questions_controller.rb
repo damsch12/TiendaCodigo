@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[ show edit update destroy ]
+  before_action :set_question, only: %i[show edit update destroy]
   load_and_authorize_resource
 
   # GET /questions or /questions.json
@@ -8,8 +8,7 @@ class QuestionsController < ApplicationController
   # end
 
   # GET /questions/1 or /questions/1.json
-  def show
-  end
+  def show; end
 
   # GET /questions/new
   # def new
@@ -23,7 +22,7 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
-    if(@question.email.blank? and user_signed_in?)
+    if @question.email.blank? && user_signed_in?
       @question.email = current_user.email
       @question.name = current_user.display_name.nil? ? current_user.email : current_user.display_name
     end
@@ -64,17 +63,18 @@ class QuestionsController < ApplicationController
   # end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def question_params
-      params.require(:question).permit(:question, :name, :email)
-    end
-    
-    def product_params
-      params.permit(:product_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_question
+    @question = Question.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def question_params
+    params.require(:question).permit(:question, :name, :email)
+  end
+
+  def product_params
+    params.permit(:product_id)
+  end
 end
