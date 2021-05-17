@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class ProductsController < Admin::ApplicationController
     def default_sorting_attribute

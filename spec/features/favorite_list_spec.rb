@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature 'Favorites list' do
@@ -20,7 +22,7 @@ RSpec.feature 'Favorites list' do
     expect(page.current_path).to eq(product_path(p1))
     expect(page).to have_selector('#favorite_remove')
   end
-  
+
   scenario 'remove favorite' do
     visit product_path(p2)
     expect(page).to have_content('User')
