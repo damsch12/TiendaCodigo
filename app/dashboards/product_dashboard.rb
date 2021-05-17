@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class ProductDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -19,7 +19,7 @@ class ProductDashboard < Administrate::BaseDashboard
     ),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    favourites: Field::HasMany,
+    favourites: Field::HasMany
   }.freeze
 
   # COLLECTION_ATTRIBUTES

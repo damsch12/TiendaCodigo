@@ -7,12 +7,12 @@ Rails.application.routes.draw do
     resources :questions
     resources :answers, except: :index
 
-    root to: "stats#index"
+    root to: 'stats#index'
   end
   resources :questions
   devise_for :users
-  resources :products, only: [:index, :show]
-  resources :favourites, only: [:create, :destroy, :index]
+  resources :products, only: %i[index show]
+  resources :favourites, only: %i[create destroy index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'products#index'
 end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :favourites, class_name: "Favourite", foreign_key: "user_id", dependent: :destroy
+  has_many :favourites, class_name: 'Favourite', foreign_key: 'user_id', dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
@@ -7,21 +7,21 @@ class User < ApplicationRecord
   def add_favourite(product_id)
     prod = Product.find(product_id)
     prod.add_favourite_counter
-    favourites << Favourite.new(user_id: self.id, product_id: product_id)
+    favourites << Favourite.new(user_id: id, product_id: product_id)
   end
-  
+
   def remove_favourite(favourite)
     favourite.product.substract_favourite_counter
     favourite.product.save
     favourites.delete(favourite)
   end
-  
+
   def favourite?(product_id)
-    favourites.exists?(user_id: self.id, product_id: product_id)
+    favourites.exists?(user_id: id, product_id: product_id)
   end
 
   def admin?
-    return false if self.role.blank?
-    self.role == "Admin"
-  end  
+    return false unless role.present?
+    role == 'Admin'
+  end
 end

@@ -1,11 +1,11 @@
 class FavouritesController < ApplicationController
   load_and_authorize_resource
-  
+
   def index
-    @title = "Favourites"
+    @title = 'Favourites'
     @favourites = current_user.favourites
     flash[:info] = 'There are no favourites yet!' unless @favourites.any?
-    #@favourites = @favourites.paginate(page: params[:page]) if @favourites.any?
+    # @favourites = @favourites.paginate(page: params[:page]) if @favourites.any?
   end
 
   def create
