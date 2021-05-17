@@ -10,12 +10,12 @@ RSpec.describe Question, type: :model do
     question = described_class.new(question: 'This is a question?', email: 'dscheck@codigodelsur.com')
     expect(question.valid?).to eq(false)
   end
-  
+
   it 'has an email' do
     question = described_class.new(question: 'This is a question?', name: 'Damian')
     expect(question.valid?).to eq(false)
   end
-  
+
   it 'has an invalid email' do
     question = described_class.new(question: 'This is a question?', name: 'Damian', email: 'dscheck')
     question.valid?
