@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Actions to handle users favourites and views
 class FavouritesController < ApplicationController
   load_and_authorize_resource
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Represents a user question for a product
 class Question < ApplicationRecord
   has_many :answers
   validates :question, :name, :email, presence: true

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Admin
+  # Controller used to override Administrate default behaviour
   class AnswersController < Admin::ApplicationController
     def create
       question = Question.find(params[:question_id])
-      answer = Answer.new(question_id: params[:question_id], user_id: current_user.id, answer: params[:answer][:answer])
-      question.answers << answer
+      add_answer(question)
       AnswerMailer.with(question: question, answer: answer, user: current_user).send_answer.deliver_later
       redirect_to admin_question_path(params[:question_id])
     end
@@ -52,5 +52,12 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    private
+
+    def add_answer(question)
+      answer = Answer.new(question_id: params[:question_id], user_id: current_user.id, answer: params[:answer][:answer])
+      question.answers << answer
+    end
   end
 end

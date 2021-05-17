@@ -10,7 +10,6 @@ class AnswerMailer < ApplicationMailer
     @user = params[:user]
     @question = params[:question]
     @answer = params[:answer]
-    byebug
     mail to: @question.email, from: @user.email, subject: 'Your question has been answered'
   end
 end

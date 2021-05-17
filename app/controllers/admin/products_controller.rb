@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
+  # Controller used to override Administrate default behaviour
   class ProductsController < Admin::ApplicationController
     def default_sorting_attribute
       :favourites

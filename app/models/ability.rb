@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Permissions definitions for cancancan
 class Ability
   include CanCan::Ability
 

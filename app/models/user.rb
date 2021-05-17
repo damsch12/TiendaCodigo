@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Represents a user
 class User < ApplicationRecord
   has_many :favourites, class_name: 'Favourite', foreign_key: 'user_id', dependent: :destroy
   # Include default devise modules. Others available are:

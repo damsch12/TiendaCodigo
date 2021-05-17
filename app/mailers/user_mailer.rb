@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Mailer for users interactions
 class UserMailer < ApplicationMailer
   default from: 'dscheck@codigodelsur.com'
 

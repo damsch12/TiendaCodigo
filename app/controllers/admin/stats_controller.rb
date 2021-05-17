@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
+  # Controller used to override Administrate default behaviour
   class StatsController < Admin::ApplicationController
     def index
       @number_of_users = User.where.not(role: 'Admin').count

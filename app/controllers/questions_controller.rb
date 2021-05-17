@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Actions to create and list product questions
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
   load_and_authorize_resource
