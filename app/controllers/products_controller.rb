@@ -12,7 +12,12 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    @question = user_signed_in? ? Question.new(name: current_user.display_name, email: current_user.email) : Question.new
+    @question = if user_signed_in?
+                  Question.new(name: current_user.display_name,
+                               email: current_user.email)
+                else
+                  Question.new
+                end
   end
 
   private
