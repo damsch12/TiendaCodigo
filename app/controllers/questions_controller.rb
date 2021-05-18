@@ -28,6 +28,7 @@ class QuestionsController < ApplicationController
     set_user_data_in_question
 
     product = add_question_counter
+    product.questions << @question
 
     if @question.save
       flash[:success] = 'Your question has been sucessfully submitted.'

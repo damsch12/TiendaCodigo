@@ -24,4 +24,6 @@
 
 <%= render 'questions/form', question: @question, product_id: @product.id %>
 
+<%= render 'products/question', questions: @product.questions %>
+
 <%= link_to 'Back', products_path, class: 'btn btn-primary mt-4' %>
