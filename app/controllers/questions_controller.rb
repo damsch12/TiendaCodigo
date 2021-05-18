@@ -25,13 +25,9 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
-    if @question.email.blank? && user_signed_in?
-      @question.email = current_user.email
-      @question.name = current_user.display_name.nil? ? current_user.email : current_user.display_name
-    end
+    set_user_data_in_question
 
-    product = Product.find(product_params[:product_id])
-    product.add_question_counter
+    product = add_question_counter
 
     if @question.save
       flash[:success] = 'Your question has been sucessfully submitted.'
@@ -66,6 +62,19 @@ class QuestionsController < ApplicationController
   # end
 
   private
+
+  def set_user_data_in_question
+    if @question.email.blank? && user_signed_in?
+      @question.email = current_user.email
+      @question.name = current_user.display_name.nil? ? current_user.email : current_user.display_name
+    end
+  end
+
+  def add_question_counter
+    product = Product.find(product_params[:product_id])
+    product.add_question_counter
+    product
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_question
