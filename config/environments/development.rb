@@ -42,7 +42,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.mailer_sender = 'dscheck@codigodelsur.com'
+  config.mailer_sender = ENV["EMAIL"]
   # config.action_mailer.delivery_method = :test
 
   config.action_mailer.delivery_method = :smtp
@@ -51,8 +51,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtpout.secureserver.net',
     port: 587,
-    user_name: 'dscheck@codigodelsur.com',
-    password: 'Codigodelsur1',
+    user_name: ENV["EMAIL"],
+    password: ENV["EMAIL_PASSWORD"],
     authentication: 'plain',
     enable_starttls_auto: true
   }
