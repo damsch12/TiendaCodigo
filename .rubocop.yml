@@ -2,7 +2,9 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'bin/{rails,rake}'
-    - 'bin/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'config/**/*'
   NewCops: enable
   
 Style/Documentation:
