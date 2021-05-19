@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     root to: 'stats#index'
   end
   resources :questions
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :products, only: %i[index show]
   resources :favourites, only: %i[create destroy index]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
