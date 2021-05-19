@@ -25,7 +25,10 @@
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, class: 'w-100 btn btn-lg btn-primary mt-4' %>
+    <div>
+      <%= render "devise/shared/links" %>
+    </div>
     <p class="mt-5 mb-3 text-muted">© 2021</p>
   </main>
 </div>
