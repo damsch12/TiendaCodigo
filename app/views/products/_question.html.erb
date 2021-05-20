@@ -1,0 +1,18 @@
+<div class="row mt-5">
+  <% questions.first(10).each do |question|%>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <%= question.question %>
+        </div>
+        <% if question.answers.any? %>
+        <div class="card-body">
+          <% question.answers.first(5).each do |answer|%>
+            <p class="card-text"><%= answer.answer %></p>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

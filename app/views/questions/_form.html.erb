@@ -1,0 +1,35 @@
+<%= form_with(model: question) do |form| %>
+  <%= hidden_field_tag 'product_id', @product.id %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.text_area :question, class: 'form-control' %>
+    <div class="form-text">If you have any questions, please do not hesitate to contact us.</div>
+  </div>
+
+  <% if !user_signed_in? %>
+    <div class="mb-3">
+      <%= form.label :name, class: 'form-label'%>
+      <%= form.text_field :name, class: 'form-control'%>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit 'Send Question', class: 'btn btn-primary' %>
+  </div>
+<% end %>

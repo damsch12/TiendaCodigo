@@ -1,0 +1,9 @@
+Hi <%= @question.name %>
+
+Someone answered one of your questions.
+
+Question: <%= @question.question %>
+Answer: <%= @answer.answer %>
+By: <%= @user.display_name.empty? ? @user.email : @user.display_name %>
+
+Regards!

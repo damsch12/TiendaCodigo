@@ -8,6 +8,10 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import 'bootstrap/js/src/collapse'  
+import 'bootstrap/js/src/dropdown'  
+import 'bootstrap/js/src/scrollspy' 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
