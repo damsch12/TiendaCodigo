@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     flash[:warning] = exception.message
     redirect_to root_path
   end
+
+  def current_ability
+    @current_ability ||= Ability.new(current_user)
+  end
 end
