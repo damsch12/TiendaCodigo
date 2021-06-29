@@ -14,6 +14,7 @@ class FavouritesController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     current_user.add_favourite params[:product_id]
+    TestWorker.perform_in(5.seconds, 'bob', 5)
     redirect_to product
   end
 
